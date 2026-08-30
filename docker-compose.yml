@@ -52,6 +52,7 @@ services:
 
   openldap:
     image: osixia/openldap:latest
+    command: --copy-service
     ports:
       - "389:389"
     environment:
