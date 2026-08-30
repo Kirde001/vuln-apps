@@ -103,6 +103,13 @@ services:
       timeout: 30s
       retries: 50
 
+  airflow-init:
+    <<: *airflow-common
+    command: initdb
+    environment:
+      <<: *airflow-common-env
+      _AIRFLOW_DB_UPGRADE: 'true'
+
   airflow-webserver:
     <<: *airflow-common
     command: webserver
