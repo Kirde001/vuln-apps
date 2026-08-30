@@ -1,0 +1,6 @@
+dn: cn=admin,dc=example,dc=org
+objectClass: simpleSecurityObject
+objectClass: organizationalRole
+cn: admin
+description: LDAP administrator
+userPassword: {SSHA}gDcXiuBDtwlCpFymQ8Akh7ObEMHdUO7K
