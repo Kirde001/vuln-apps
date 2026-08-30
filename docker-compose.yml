@@ -4,6 +4,7 @@ include:
 x-airflow-common:
   &airflow-common
   image: vulhub/airflow:1.10.10
+  restart: unless-stopped
   environment:
     &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
@@ -86,6 +87,7 @@ services:
 
   postgres:
     image: postgres:13-alpine
+    restart: unless-stopped
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
@@ -97,6 +99,7 @@ services:
 
   redis:
     image: redis:5-alpine
+    restart: unless-stopped
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s
@@ -106,6 +109,7 @@ services:
   airflow-init:
     <<: *airflow-common
     command: initdb
+    restart: "no"
     environment:
       <<: *airflow-common-env
       _AIRFLOW_DB_UPGRADE: 'true'
