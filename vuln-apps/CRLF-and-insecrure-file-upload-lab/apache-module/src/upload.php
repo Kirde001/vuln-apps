@@ -5,20 +5,20 @@ if (isset($_FILES['userfile'])) {
     $file_name = basename($_FILES['userfile']['name']);
     $target_path = $upload_dir . $file_name;
     if (move_uploaded_file($_FILES['userfile']['tmp_name'], $target_path)) {
-        echo "<h3>Файл успешно загружен!</h3>";
-        echo "<p>Ссылка: <a href='{$target_path}'>{$target_path}</a></p>";
+        echo "<h3>File has been uploaded</h3>";
+        echo "<p>Path: <a href='{$target_path}'>{$target_path}</a></p>";
     } else {
-        echo "<h3>Ошибка загрузки. Проверьте права на папку uploads/</h3>";
+        echo "<h3>Upload ERR/</h3>";
     }
 }
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Image Uploader (Vulnerable)</title>
+    <title>Uploader-vuln</title>
 </head>
 <body>
-    <h2>Upload Profile Picture</h2>
+    <h2>Upload PFP</h2>
     <form enctype="multipart/form-data" action="upload.php" method="POST">
         <input type="file" name="userfile" required>
         <br><br>
