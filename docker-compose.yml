@@ -1,3 +1,6 @@
+include:
+  - ./vuln-apps/CRLF-and-insecrure-file-upload-lab/docker-compose.yml
+
 x-airflow-common:
   &airflow-common
   image: vulhub/airflow:1.10.10
@@ -19,12 +22,6 @@ x-airflow-common:
       condition: service_healthy
 
 services:
-  crlf-app:
-    build: ./vuln-apps/CRLF-and-insecrure-file-upload-lab
-    ports:
-      - "8081:80"
-    restart: unless-stopped
-
   tomcat-lab:
     build: ./vuln-apps/HTTP-cookie-sandwich-lab
     ports:
