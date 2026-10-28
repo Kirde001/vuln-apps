@@ -82,6 +82,8 @@ services:
     image: bkimminich/juice-shop
     ports:
       - "3000:3000"
+    environment:
+      NODE_CONFIG: '{"challenges":{"safetyMode":"disabled"}}'
     restart: unless-stopped
 
   postgres:
